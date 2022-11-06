@@ -1,19 +1,19 @@
 import { Metadata, SpeakeasyBase } from "../../../internal/utils/utils";
 
 
-export class GetQueryParams extends SpeakeasyBase {
+export class Get2QueryParams extends SpeakeasyBase {
   @Metadata({ data: "queryParam, style=form;explode=true;name=foo" })
   foo: string;
 }
 
 
-export class GetRequest extends SpeakeasyBase {
+export class Get2Request extends SpeakeasyBase {
   @Metadata()
-  queryParams: GetQueryParams;
+  queryParams: Get2QueryParams;
 }
 
 
-export class Get200ApplicationJson extends SpeakeasyBase {
+export class Get2200ApplicationJson extends SpeakeasyBase {
   @Metadata({ data: "json, name=args" })
   args?: Map<string, unknown>;
 
@@ -28,7 +28,7 @@ export class Get200ApplicationJson extends SpeakeasyBase {
 }
 
 
-export class GetResponse extends SpeakeasyBase {
+export class Get2Response extends SpeakeasyBase {
   @Metadata()
   contentType: string;
 
@@ -36,5 +36,5 @@ export class GetResponse extends SpeakeasyBase {
   statusCode: number;
 
   @Metadata()
-  get200ApplicationJsonObject?: Get200ApplicationJson;
+  get2200ApplicationJsonObject?: Get2200ApplicationJson;
 }

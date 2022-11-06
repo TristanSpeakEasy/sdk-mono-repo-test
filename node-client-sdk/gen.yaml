@@ -1,6 +1,6 @@
 management:
-    openapi-checksum: e3d4062d7d35a667e1b9992392f6ca57
-    openapi-version: 0.0.3
+    openapi-checksum: 278cca923ecff869895bd4d86e03cf3e
+    openapi-version: 0.0.4
     speakeasy-version: 0.10.1
 typescript:
-    version: 0.1.0
+    version: 0.1.1
