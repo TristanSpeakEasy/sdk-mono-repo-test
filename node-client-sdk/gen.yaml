@@ -1,10 +1,6 @@
-go:
-    version: 0.1.0
 management:
     openapi-checksum: e3d4062d7d35a667e1b9992392f6ca57
     openapi-version: 0.0.3
     speakeasy-version: 0.10.1
-python:
-    version: 0.1.0
 typescript:
     version: 0.1.0

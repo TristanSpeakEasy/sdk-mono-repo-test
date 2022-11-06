@@ -1,13 +1,13 @@
 openapi: 3.0.3
 info:
   title: Test
-  version: 0.0.3
+  version: 0.0.4
 servers:
   - url: https://httpbin.org
 paths:
   /get:
     get:
-      operationId: get
+      operationId: get2
       parameters:
         - name: foo
           in: query
