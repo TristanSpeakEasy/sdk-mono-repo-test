@@ -50,7 +50,7 @@ func New(opts ...SDKOption) *SDK {
 	return sdk
 }
 
-func (s *SDK) Get2(ctx context.Context, request operations.Get2Request) (*operations.Get2Response, error) {
+func (s *SDK) Get(ctx context.Context, request operations.GetRequest) (*operations.GetResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/get"
 
@@ -71,7 +71,7 @@ func (s *SDK) Get2(ctx context.Context, request operations.Get2Request) (*operat
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.Get2Response{
+	res := &operations.GetResponse{
 		StatusCode:  int64(httpRes.StatusCode),
 		ContentType: contentType,
 	}
@@ -79,12 +79,12 @@ func (s *SDK) Get2(ctx context.Context, request operations.Get2Request) (*operat
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *operations.Get2200ApplicationJSON
+			var out *operations.Get200ApplicationJSON
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.Get2200ApplicationJSONObject = out
+			res.Get200ApplicationJSONObject = out
 		}
 	}
 

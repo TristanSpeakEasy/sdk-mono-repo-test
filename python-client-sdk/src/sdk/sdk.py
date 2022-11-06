@@ -24,7 +24,7 @@ class SDK:
     
 
     
-    def get2(self, request: operations.Get2Request) -> operations.Get2Response:
+    def get(self, request: operations.GetRequest) -> operations.GetResponse:
         base_url = self.server_url
         
         url = base_url.removesuffix("/") + "/get"
@@ -36,12 +36,12 @@ class SDK:
         r = client.request("GET", url, params=query_params)
         content_type = r.headers.get("Content-Type")
 
-        res = operations.Get2Response(status_code=r.status_code, content_type=content_type)
+        res = operations.GetResponse(status_code=r.status_code, content_type=content_type)
         
         if r.status_code == 200:
             if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.Get2200ApplicationJSON])
-                res.get2_200_application_json_object = out
+                out = utils.unmarshal_json(r.text, Optional[operations.Get200ApplicationJSON])
+                res.get_200_application_json_object = out
 
         return res
 

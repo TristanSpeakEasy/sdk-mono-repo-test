@@ -32,12 +32,12 @@ export class SDK {
     }
   }
   
-  Get2(
-    req: operations.Get2Request,
+  Get(
+    req: operations.GetRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.Get2Response> {
+  ): Promise<operations.GetResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.Get2Request(req);
+      req = new operations.GetRequest(req);
     }
     
     let baseURL: string = this.serverURL;
@@ -61,10 +61,10 @@ export class SDK {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        let res: operations.Get2Response = {statusCode: httpRes.status, contentType: contentType};
+        let res: operations.GetResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (httpRes?.status) {
           case 200:
-            if (MatchContentType(contentType, "application/json")) res.get2200ApplicationJsonObject = httpRes?.data;
+            if (MatchContentType(contentType, "application/json")) res.get200ApplicationJsonObject = httpRes?.data;
             break;
         }
 
