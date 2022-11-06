@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Test
+  version: 0.0.1
+servers:
+  - url: https://httpbin.org
+paths:
+  /post:
+    post:
+      operationId: test
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/FormInput"
+            encoding:
+              json:
+                contentType: application/json
+              default:
+                style: form
+                explode: false
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+    # post:
+    #   operationId: test2
+    #   requestBody:
+    #     content:
+    #       application/x-www-form-urlencoded:
+    #         schema:
+    #           type: object
+    #           additionalProperties: true
+    #   responses:
+    #     "200":
+    #       description: OK
+    #       content:
+    #         application/json:
+    #           schema:
+    #             type: object
+components:
+  schemas:
+    FormInput:
+      type: object
+      properties:
+        styleExplode:
+          type: array
+          items:
+            type: string
+        default:
+          type: object
+          additionalProperties:
+            type: string
+        json:
+          $ref: "#/components/schemas/FormInputJSON"
+    FormInputJSON:
+      type: object
+      properties:
+        test:
+          type: boolean
