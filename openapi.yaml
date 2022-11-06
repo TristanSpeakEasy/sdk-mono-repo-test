@@ -5,20 +5,15 @@ info:
 servers:
   - url: https://httpbin.org
 paths:
-  /post:
-    post:
-      operationId: test
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: "#/components/schemas/FormInput"
-            encoding:
-              json:
-                contentType: application/json
-              default:
-                style: form
-                explode: false
+  /get:
+    get:
+      operationId: get
+      parameters:
+        - name: foo
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -26,21 +21,51 @@ paths:
             application/json:
               schema:
                 type: object
-    # post:
-    #   operationId: test2
-    #   requestBody:
-    #     content:
-    #       application/x-www-form-urlencoded:
-    #         schema:
-    #           type: object
-    #           additionalProperties: true
-    #   responses:
-    #     "200":
-    #       description: OK
-    #       content:
-    #         application/json:
-    #           schema:
-    #             type: object
+                properties:
+                  args:
+                    type: object
+                  headers:
+                    type: object
+                  origin:
+                    type: string
+                  url:
+                    type: string
+  # /post:
+  #   post:
+  #     operationId: test
+  #     requestBody:
+  #       content:
+  #         application/x-www-form-urlencoded:
+  #           schema:
+  #             $ref: "#/components/schemas/FormInput"
+  #           encoding:
+  #             json:
+  #               contentType: application/json
+  #             default:
+  #               style: form
+  #               explode: false
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  # post:
+  #   operationId: test2
+  #   requestBody:
+  #     content:
+  #       application/x-www-form-urlencoded:
+  #         schema:
+  #           type: object
+  #           additionalProperties: true
+  #   responses:
+  #     "200":
+  #       description: OK
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
 components:
   schemas:
     FormInput:
