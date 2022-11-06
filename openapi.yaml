@@ -30,27 +30,27 @@ paths:
                     type: string
                   url:
                     type: string
-  /post:
-    post:
-      operationId: test
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: "#/components/schemas/FormInput"
-            encoding:
-              json:
-                contentType: application/json
-              default:
-                style: form
-                explode: false
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
+  # /post:
+  #   post:
+  #     operationId: test
+  #     requestBody:
+  #       content:
+  #         application/x-www-form-urlencoded:
+  #           schema:
+  #             $ref: "#/components/schemas/FormInput"
+  #           encoding:
+  #             json:
+  #               contentType: application/json
+  #             default:
+  #               style: form
+  #               explode: false
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
   # post:
   #   operationId: test2
   #   requestBody:
