@@ -1,1 +1,0 @@
-# sdk-mono-repo-test
