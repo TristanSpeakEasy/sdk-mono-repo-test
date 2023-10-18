@@ -1,0 +1,25 @@
+name: Generate Client SDKs
+"on":
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force generation of SDKs
+        type: boolean
+        default: false
+  schedule:
+    - cron: 0 1 * * 1
+jobs:
+  generate:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
+    with:
+      openapi_doc_location: "https://docs.speakeasyapi.dev/openapi.yaml"
+      speakeasy_version: latest
+      languages: |-
+        - typescript: ./speakeasy
+      create_release: true
+      mode: pr
+      force: ${{ github.event.inputs.force }}
+      publish_typescript: true
+    secrets:
+      github_access_token: ${{ secrets.GIT_PAT }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
