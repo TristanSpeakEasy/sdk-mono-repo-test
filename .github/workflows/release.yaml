@@ -2,7 +2,7 @@ name: Release Client SDKs
 "on":
   push:
     paths:
-      - /speakeasy/RELEASES.md
+      - "speakeasy/RELEASES.md"
     branches:
       - main
 jobs:
